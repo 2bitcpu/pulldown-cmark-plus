@@ -1,5 +1,5 @@
 #[allow(dead_code)]
-use pulldown_cmark::{html, CodeBlockKind, Event, Options, Parser, Tag};
+use pulldown_cmark::{CodeBlockKind, Event, Options, Parser, Tag, html};
 
 #[allow(dead_code)]
 pub fn to_html(markdown: &str) -> String {
@@ -90,23 +90,4 @@ fn get_lang(cowstr: &str) -> (&str, &str, bool) {
     }
 
     (lang, file, no_style)
-}
-
-#[allow(dead_code)]
-pub fn get_title(markdown: &str) -> String {
-    let mut i: usize = 0;
-    for line in markdown.lines().collect::<Vec<&str>>() {
-        if line.starts_with("#") {
-            let title = line.trim_start_matches('#').trim();
-
-            if !title.is_empty() {
-                return title.to_string();
-            }
-        }
-        i += 1;
-        if i > 30 {
-            break;
-        }
-    }
-    "".to_string()
 }

@@ -1,4 +1,4 @@
-use pulldown_cmark_plus::{get_title, to_html};
+use pulldown_cmark_plus::to_html;
 
 #[test]
 fn test_to_html() {
@@ -39,15 +39,4 @@ fn test_to_html() {
     let markdown = "# Hello,World!";
     let html = to_html(markdown);
     assert!(html.contains("<h1>Hello,World!</h1>"));
-}
-
-#[test]
-fn test_get_title() {
-    let markdown = "# Rust Code Example\n\nSome text here.";
-    let title = get_title(markdown);
-    assert_eq!(title, "Rust Code Example");
-
-    let markdown_no_title = "Some text here.";
-    let title_no_title = get_title(markdown_no_title);
-    assert!(title_no_title.is_empty());
 }
