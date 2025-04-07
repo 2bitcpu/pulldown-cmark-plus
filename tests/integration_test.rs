@@ -11,7 +11,7 @@ fn test_to_html() {
     assert!(!html.contains("<div class=\"codeblock-file\">"));
     assert!(html.contains("<pre><code class=\"rust\" data-lang=\"language-rust\">"));
     assert!(html.contains("fn main() {"));
-    assert!(html.contains("println!(&quot;Hello, world!&quot;);"));
+    assert!(html.contains("println!(\"Hello, world!\");"));
     assert!(html.contains("</code></pre>"));
 
     let markdown = "```shell:main.sh
@@ -29,7 +29,7 @@ fn test_to_html() {
     let html = to_html(markdown);
     assert!(html.contains("<div class=\"codeblock-file\"><span>main.js</span></div>"));
     assert!(html.contains("<pre><code class=\"js\" data-lang=\"language-js\">"));
-    assert!(html.contains("console.log(&quot;Hello,World!&quot;);"));
+    assert!(html.contains("console.log(\"Hello,World!\");"));
     assert!(html.contains("</code></pre>"));
 
     let markdown = "";
